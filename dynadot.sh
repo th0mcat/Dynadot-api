@@ -185,7 +185,7 @@ function formatSubRecords(){
           value2="$(echo "cat $subdomainNodes/SubDomainRecord[$xmlIndex]/Value2/text()" | xmllint --nocdata --shell $getResponseFile | sed '1d;$d')"
           value2=$(jq -rn --arg x "$value2" '$x|@uri')
 
-          subRecords+="&subdomain$index=$subhost&sub_record_type$index=$type&sub_record$index=$value&sub_recordx$index=$value"
+          subRecords+="&subdomain$index=$subhost&sub_record_type$index=$type&sub_record$index=$value&sub_recordx$index=$value2"
         else
           subRecords+="&subdomain$index=$subhost&sub_record_type$index=$type&sub_record$index=$value"
         fi
