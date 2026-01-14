@@ -49,8 +49,11 @@ recordIndex=0
 lastRecordIndex=0
 
 #The subdomain key in dynadot
-newRecord="_acme-challenge.$subdomain"
-[[ "${subdomain}" == '*' ]]  && newRecord="_acme-challenge"
+if [ -z "$subdomain" ] || [ "$subdomain" == "*" ]; then
+    newRecord="_acme-challenge"
+else
+    newRecord="_acme-challenge.$subdomain"
+fi
 
 ###
 # Writes to a log file ($logFile), by default it writes <hh:mm:ss message>.
